@@ -1,0 +1,20 @@
+{
+    "server": {
+      "host": "localhost",
+      "port": 3001
+    },
+    "weather_service": {
+        "API_KEY": "bb6e363c7d7b49f1b92120143251505",
+        "BASE_URL": "http://api.weatherapi.com/v1"
+    },
+    "jwt": {
+      "jwt_access_secret": "uevent_access",
+      "jwt_refresh_secret": "uevent_refresh",
+      "access_expire_at": "6h",
+      "refresh_expire_at": "30d"
+    },
+    "register": {
+      "salt_rounds": 10,
+      "default_image": "/images/default_avatar.png"
+    }
+  }
