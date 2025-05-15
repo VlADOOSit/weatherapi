@@ -13,8 +13,11 @@
       "access_expire_at": "6h",
       "refresh_expire_at": "30d"
     },
-    "register": {
-      "salt_rounds": 10,
-      "default_image": "/images/default_avatar.png"
+    "db": {
+        "DB_NAME": "weatherdb",
+        "DB_USER": "vkharkivsk",
+        "DB_PASSWORD": "password",
+        "DB_HOST": "localhost",
+        "DB_PORT": "5432"
     }
   }

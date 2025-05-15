@@ -1,4 +1,4 @@
-const config = require('../config.json');
+const config = require('../config/config.json');
 const axios = require('axios');
 const ApiError = require('../utils/ApiError');
 
