@@ -31,6 +31,11 @@ Subscription.init({
         validate: {
             isIn: [['hourly', 'daily']]
         }
+    },
+    email_confirmed: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
     }
     }, 
     {
