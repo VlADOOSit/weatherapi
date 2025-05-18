@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: vkharkivsk
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: weatherdb
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      PORT: 3001
+      HOST: localhost
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: vkharkivsk
+      DB_PASSWORD: password
+      DB_NAME: weatherdb
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '3001:3001'
+    command: sh -c "npx sequelize-cli db:migrate && npm start"
+
+volumes:
+  pgdata:
