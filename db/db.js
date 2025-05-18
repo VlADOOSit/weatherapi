@@ -10,6 +10,12 @@ const sequelize = new Sequelize(
     port: process.env.DB_PORT || config.db.DB_PORT,
     dialect: 'postgres',
     logging: false,
+
+    timezone: '+00:00',
+
+    dialectOptions: {
+      useUTC: true,
+    },
   }
 );
 

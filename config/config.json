@@ -1,17 +1,17 @@
 {
     "server": {
       "host": "localhost",
-      "port": 3001
+      "port": 3001,
+      "BASE_URL": "http://localhost:3001/weatherapi.app/api"
     },
     "weather_service": {
-        "API_KEY": "bb6e363c7d7b49f1b92120143251505",
+        "API_KEY": "",
         "BASE_URL": "http://api.weatherapi.com/v1"
     },
     "jwt": {
-      "jwt_access_secret": "uevent_access",
-      "jwt_refresh_secret": "uevent_refresh",
-      "access_expire_at": "6h",
-      "refresh_expire_at": "30d"
+      "jwt_confirm_secret": "weatherapi_confirm",
+      "jwt_unsubscribe_secret": "weatherapi_unsubscribe",
+      "confirm_expire_at": "20m"
     },
     "db": {
         "DB_NAME": "weatherdb",
@@ -19,5 +19,9 @@
         "DB_PASSWORD": "password",
         "DB_HOST": "localhost",
         "DB_PORT": "5432"
+    },
+    "mail": {
+        "user": "vlad.kharkovskiy22@gmail.com",
+        "pass": ""
     }
   }

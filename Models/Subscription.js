@@ -36,7 +36,11 @@ Subscription.init({
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: false
-    }
+    },
+    unsubscribe_token: {
+        type: DataTypes.STRING(255),
+        allowNull: true
+    },
     }, 
     {
         sequelize,

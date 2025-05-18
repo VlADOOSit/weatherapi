@@ -3,7 +3,7 @@ const axios = require('axios');
 const ApiError = require('../utils/ApiError');
 
 const BASE_URL = config.weather_service.BASE_URL;
-const API_KEY = config.weather_service.API_KEY;
+const API_KEY = process.env.WEATHER_API || config.weather_service.API_KEY;
 
 
 class WeatherService {
