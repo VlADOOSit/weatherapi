@@ -6,13 +6,20 @@ const mailService = require('../services/mail-service');
 const tokenService = require('../services/token-service');
 const Subscription = require('../Models/Subscription');
 const config = require('../config/config.json');
+var validator = require('validator');
 dayjs.extend(utc);
+
+const BASE_URL = process.env.BASE_URL || config.server.BASE_URL;
 
 class SubscriptionComtroller {
     async subscribeToRecive(req, res, next) {
         try {
             if (!req.body.email || !req.body.city || !req.body.frequency) {
                 return next(ApiError.BadRequest("Incorrect request body"));
+            }
+
+            if(!validator.isEmail(req.body.email)) {
+                return next(ApiError.BadRequest("Incorrect email"));
             }
 
             const subscriptionByEmail = await Subscription.findAll({
@@ -37,7 +44,7 @@ class SubscriptionComtroller {
                 unsubscribe_token: unsubscribeToken
             });
             
-            const confirmLink = `${config.server.BASE_URL}/confirm/${confirmToken}`
+            const confirmLink = `${BASE_URL}/confirm/${confirmToken}`
             await mailService.sendActivationMail(req.body.email, confirmLink)
 
             return res.sendStatus(200);
@@ -66,7 +73,7 @@ class SubscriptionComtroller {
             subscriptionByEmail.last_sent_at = dayjs.utc().toDate();
             await subscriptionByEmail.save();
 
-            const unsubscribeLink = `${config.server.BASE_URL}/unsubscribe/${subscriptionByEmail.unsubscribe_token}`;
+            const unsubscribeLink = `${BASE_URL}/unsubscribe/${subscriptionByEmail.unsubscribe_token}`;
 
             const weatherServiceResponse = await weatherService.parseWeatherByCity(subscriptionByEmail.city);
             await mailService.sendWeather(email, 

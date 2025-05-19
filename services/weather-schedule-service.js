@@ -40,7 +40,6 @@ class WeatherScheduleService {
             
 					subscription.last_sent_at = dayjs.utc().toDate();
 					await subscription.save();
-					console.log('Updated last_sent_at:', subscription.last_sent_at);
 				} catch (err) {
 					console.error(`Error sending weather to ${subscription.email}:`, err);
 				}

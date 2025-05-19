@@ -15,7 +15,7 @@ WeatherScheduleService.start();
         await sequelize.authenticate();
         console.log('Database connected');
 
-        app.listen(PORT, () => {
+        app.listen(PORT, HOST, () => {
         console.log(`Server start on https://${HOST}:${PORT}`);
         });
     } catch (err) {
