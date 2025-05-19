@@ -45,6 +45,35 @@ BASE_URL=http://localhost:3001/weatherapi.app/api</code></pre>
 
 ---
 
+### Endpoints
+
+- `GET /weather?city=Kyiv` – Get current weather.
+
+  **Response:**
+```json
+{
+  "temperature": 22.5,
+  "humidity": 65,
+  "description": "Partly cloudy"
+}
+```
+- `POST /subscribe` – Subscribe with `email`, `city`, `frequency`.
+
+    **Request body:**
+```json
+{
+  "email": "vlad.kharkovl@gmail.com",
+  "city": "Kyiv",
+  "frequency": "hourly"
+}
+```
+
+- `GET /confirm/{token}` – Confirm subscription.
+
+- `GET /unsubscribe/{token}` – Unsubscribe.
+
+---
+
 # AWS EC2
 
 The application was also deployed on EC2 with a very simple frontend. In this repository https://github.com/VlADOOSit/weatherapi-react you can see the structure of the common docker-compose file and nginx  
